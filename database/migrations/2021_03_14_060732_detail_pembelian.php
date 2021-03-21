@@ -13,10 +13,10 @@ class DetailPembelian extends Migration
      */
     public function up()
     {
-        Schema::create('detailpembelian', function (Blueprint $table){
+        Schema::create('detail_pembelian', function (Blueprint $table){
             $table->string('no_beli',14);
-            $table->integer('qty_beli',11);
-            $table->integer('sub_beli',11);
+            $table->integer('qty_beli');
+            $table->integer('sub_beli');
         });
     }
 

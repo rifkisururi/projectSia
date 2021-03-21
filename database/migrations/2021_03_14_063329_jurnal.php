@@ -18,8 +18,8 @@ class Jurnal extends Migration
             $table->text('keterangan');
             $table->date('tgl_jurnal');
             $table->string('no_akun',5);
-            $table->integer('debet',11);
-            $table->integer('kredit',11);
+            $table->integer('debet');
+            $table->integer('kredit');
 
             
            

@@ -16,8 +16,8 @@ class DetailRetur extends Migration
         Schema::create('detail_retur', function (Blueprint $table){
             $table->string('no_retur',14);
             $table->string('kd_brg',5);
-            $table->integer('qty_retur',11);
-            $table->integer('sub_retur',11);
+            $table->integer('qty_retur');
+            $table->integer('sub_retur');
             
            
         });
