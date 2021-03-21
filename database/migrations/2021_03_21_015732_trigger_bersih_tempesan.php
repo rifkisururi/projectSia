@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DetailPembelian extends Migration
+class TriggerBersihTempesan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class DetailPembelian extends Migration
      */
     public function up()
     {
-        Schema::create('detailpembelian', function (Blueprint $table){
-            $table->string('no_beli',14);
-            $table->integer('qty_beli',11);
-            $table->integer('sub_beli',11);
-        });
+        //
+        
+            DB::unprepared('
+            CREATE TRIGGER clear_tem_pesan AFTER INSERT ON detail_pesan
+            FOR EACH ROW 
+            BEGIN
+            DELETE FROM temp_pembelian;
+            END
+            ');
+            
     }
 
     /**
@@ -27,6 +32,8 @@ class DetailPembelian extends Migration
      */
     public function down()
     {
-        //
+    DB::unprepared('DROP TRIGGER clear_tem_pesan');
     }
+   
+    
 }
