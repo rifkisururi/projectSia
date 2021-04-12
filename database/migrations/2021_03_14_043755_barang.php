@@ -13,16 +13,16 @@ class Barang extends Migration
      */
     public function up()
     {
-        Schema::create('barang', function (Blueprint $table){
-            $table->string('kd_brg',5)->primary;
-            $table->string('nm_brg',5);
+        Schema::create('barang', function (Blueprint $table) {
+            $table->string('kd_brg', 5)->primary;
+            $table->string('nm_brg', 5);
             $table->integer('harga');
             $table->integer('stok');
         });
         //
     }
 
-    /**
+    /**cl
      * Reverse the migrations.
      *
      * @return void
@@ -30,5 +30,6 @@ class Barang extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('barang');
     }
 }
