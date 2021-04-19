@@ -30,7 +30,9 @@
                         <td>{{$row->name}}</td>
                         <td>{{$row->email}}</td>
                         @foreach ($row->roles as $r)
-                        <td>{{$r->nama}}</td>
+                        <td>
+                            {{$r->id}}
+                        </td>
                         @endforeach
                         <td align="center">
                             <a href="/user/hapus/{{ $row->id }}" onclick="return confirm('Yakin Ingin menghapus data?')">
