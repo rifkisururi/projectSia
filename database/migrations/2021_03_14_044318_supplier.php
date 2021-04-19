@@ -13,11 +13,11 @@ class Supplier extends Migration
      */
     public function up()
     {
-        Schema::create('supplier', function (Blueprint $table){
-            $table->string('kd_supp',5)->primary;
-            $table->string('nm_supp',25);
-            $table->string('alamat',50);
-            $table->string('telpon',13);
+        Schema::create('supplier', function (Blueprint $table) {
+            $table->string('kd_supp', 10)->primary;
+            $table->string('nm_supp', 25);
+            $table->string('alamat', 50);
+            $table->string('telpon', 13);
         });
         //
     }
