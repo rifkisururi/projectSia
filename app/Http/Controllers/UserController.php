@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -16,6 +19,7 @@ class UserController extends Controller
     {
         //
         $user = \App\User::All();
+        $roles = Role::pluck('name', 'name')->all();
         return view('admin.user', ['user' => $user]);
     }
 
@@ -42,12 +46,14 @@ class UserController extends Controller
         $save_user->name = $request->get('username');
         $save_user->email = $request->get('email');
         $save_user->password = $request->get('password');
+        $save_user->save();
+
         if ($request->get('roles') == 'ADMIN') {
             $save_user->assignRole('admin');
         } else {
             $save_user->assignRole('user');
         }
-        $save_user->save();
+
         Alert::success('Tersimpan', 'Data berhasil masuk');
 
         $user = \App\User::All();
@@ -62,7 +68,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.user', compact('user'));
     }
 
     /**
@@ -73,7 +80,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+        return view('admin.editUser', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -85,7 +95,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        $user->assignRole($request->input('role'));
+        Alert::success('Update', 'Data Berhasil di update');
+        //return redirect()->route('user.index');
+        return redirect('/user');
     }
 
     /**
@@ -99,7 +114,7 @@ class UserController extends Controller
         $hapus = \App\User::findOrFail($id);
         $hapus->delete();
         $hapus->removeRole('admin', 'user');
-        Alert::success('Tersimpan', 'Data berhasil masuk');
-        return redirect()->route('user.index');
+        Alert::success('Tersimpan', 'Data berhasil dihapus');
+        return redirect('/user');
     }
 }
