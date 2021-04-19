@@ -32,3 +32,9 @@ Route::resource('/barang', 'BarangController')->middleware('role:admin||user');
 Route::get('/barang/hapus/{id}', 'BarangController@destroy');
 Route::get('/barang/{id}/edit', 'BarangController@edit');
 Route::POST('/barang/{id}', 'BarangController@update');
+
+Route::resource('/suplayer', 'supplierController')->middleware('role:admin||user');
+Route::POST('/suplayer', 'supplierController@store')->middleware('role:admin||user');
+Route::get('/suplayer/hapus/{id}', 'supplierController@destroy');
+Route::get('/suplayer/edit/{id}', 'supplierController@edit');
+Route::PUT('/suplayer/{id}', 'supplierController@update');
