@@ -1,1 +1,3 @@
 # projectSIA
+
+composer install
