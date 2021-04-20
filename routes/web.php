@@ -38,3 +38,8 @@ Route::POST('/suplayer', 'supplierController@store')->middleware('role:admin||us
 Route::get('/suplayer/hapus/{id}', 'supplierController@destroy');
 Route::get('/suplayer/edit/{id}', 'supplierController@edit');
 Route::PUT('/suplayer/{id}', 'supplierController@update');
+
+Route::resource('/akun', 'akunController')->middleware('role:admin||user');
+Route::get('/akun/hapus/{kd_akun}', 'akunController@destroy')->middleware('role:admin||user');
+Route::get('/akun/edit/{kd_akun}', 'akunController@edit')->middleware('role:admin||user');
+Route::PUT('/akun/edit/{kd_akun}', 'akunController@update')->middleware('role:admin||user');

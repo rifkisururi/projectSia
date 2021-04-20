@@ -13,11 +13,10 @@ class Setting extends Migration
      */
     public function up()
     {
-        Schema::create('setting', function (Blueprint $table){
-            $table->string('Id_setting',5)->primary;
-            $table->string('no_akun',5);
-            $table->string('nm_transaksi',20);
-           
+        Schema::create('setting', function (Blueprint $table) {
+            $table->string('id_setting', 5)->primary;
+            $table->string('no_akun', 5);
+            $table->string('nm_transaksi', 20);
         });
         //
     }
