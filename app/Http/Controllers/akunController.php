@@ -96,6 +96,6 @@ class akunController extends Controller
         $barang = Akun::findOrFail($kd_akun);
         $barang->delete();
         Alert::success('Pesan ', 'Data berhasil dihapus');
-        return redirect()->route('akun.index');
+        return redirect('/akun');
     }
 }
