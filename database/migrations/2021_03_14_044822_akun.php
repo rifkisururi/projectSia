@@ -13,10 +13,9 @@ class Akun extends Migration
      */
     public function up()
     {
-        Schema::create('akun', function (Blueprint $table){
-            $table->string('kd_akun',5)->primary;
-            $table->string('nm_akun',25);
-           
+        Schema::create('akun', function (Blueprint $table) {
+            $table->string('kd_akun', 5)->primary;
+            $table->string('nm_akun', 25);
         });
         //
     }

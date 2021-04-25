@@ -10,4 +10,6 @@ class Akun extends Model
     protected $table = "akun";
     protected $primaryKey = 'kd_akun';
     public $timestamps = false;
+
+    protected $keyType = 'string';
 }

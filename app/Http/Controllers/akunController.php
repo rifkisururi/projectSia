@@ -93,9 +93,9 @@ class akunController extends Controller
      */
     public function destroy($kd_akun)
     {
-        $barang = Akun::findOrFail($kd_akun);
-        $barang->delete();
+        $akun = Akun::findOrFail($kd_akun);
+        $akun->delete();
         Alert::success('Pesan ', 'Data berhasil dihapus');
-        return redirect('/akun');
+        return redirect()->route('akun.index');
     }
 }
