@@ -61,6 +61,7 @@
                         <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('barang.index') }}"> Master Barang</a>
                         <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('suplayer.index') }}"> Master Supplayer</a>
                         <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('akun.index') }}"> Master Akun</a>
+                        <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('seting.transaksi') }}"> Master Setting Akun</a>
                     </div>
                 </div>
             </li>

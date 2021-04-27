@@ -43,3 +43,5 @@ Route::resource('/akun', 'akunController')->middleware('role:admin||user');
 Route::get('/akun/hapus/{kd_akun}', 'akunController@destroy')->middleware('role:admin||user');
 Route::get('/akun/edit/{kd_akun}', 'akunController@edit')->middleware('role:admin||user');
 Route::PUT('/akun/edit/{kd_akun}', 'akunController@update')->middleware('role:admin||user');
+
+Route::get('/setting', 'SettingController@index')->name('seting.transaksi')->middleware('role:admin||user');
