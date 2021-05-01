@@ -11,7 +11,7 @@
     <div class="row col-sm-6">
         <div class="col-sm">
             <input type="hidden" name="kode[]" value="{{ $stg->id_setting }}">
-            <label for="exampleFormControlInput1">Transaksi {{ $stg->nama_transaksi}} </label>
+            <label for="exampleFormControlInput1">Tr ansaksi {{ $stg->nama_transaksi}} </label>
         </div>
         <div class="col-sm">
             <label for="exampleFormControlInput1">{{ $stg->no_akun }}</label>

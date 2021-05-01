@@ -45,3 +45,11 @@ Route::get('/akun/edit/{kd_akun}', 'akunController@edit')->middleware('role:admi
 Route::PUT('/akun/edit/{kd_akun}', 'akunController@update')->middleware('role:admin||user');
 
 Route::get('/setting', 'SettingController@index')->name('seting.transaksi')->middleware('role:admin||user');
+
+//Pemesanan
+Route::get('/transaksi', 'PemesananController@index')->name('pemesanan.transaksi');
+Route::post('/sem/store', 'PemesananController@store');
+Route::get('/transaksi/hapus/{kd_brg}', 'PemesananController@destroy');
+//Detail Pesan
+Route::post('/detail/store', 'DetailPesanController@store');
+Route::post('/detail/simpan', 'DetailPesanController@simpan');

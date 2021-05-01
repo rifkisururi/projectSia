@@ -65,7 +65,22 @@
                     </div>
                 </div>
             </li>
+
             @endrole
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages1">
+                    <i class="fas fa-fw fa-folder-open"></i>
+                    <span>Transaksi</span>
+                </a>
+                <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item fas fa-arrow-circle-right" href=" {{ route('pemesanan.transaksi') }}"> Pemesanan</a>
+                        <a class=" collapse-item fas fa-arrow-circle-right" href="{{ route('barang.index') }}"> Pembelian</a>
+                        <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('suplayer.index') }}"> Retur</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
