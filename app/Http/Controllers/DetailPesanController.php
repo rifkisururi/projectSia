@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DetailPesan;
 use App\Pemesanan;
 use Alert;
+use DB;
 
 use Illuminate\Http\Request;
 
@@ -21,16 +22,8 @@ class DetailPesanController extends Controller
         $tambah_pemesanan->save();
         //SIMPAN DATA KE TABEL DETAIL
 
-        $kd_brg = $request->kd_brg;
-        $qty = $request->qty_pesan;
-        $sub_total = $request->sub_total;
-        foreach ($kd_brg as $key => $no) {
-            $input['no_pesan'] = $request->no_pesan;
-            $input['kd_brg'] = $kd_brg[$key];
-            $input['qty_pesan'] = $qty[$key];
-            $input['subtotal'] = $sub_total[$key];
-            DetailPesan::insert($input);
-        }
+        DB::select('call sp_migrasiTempDataPemesanan()');
+
         Alert::success('Pesan ', 'Data berhasil disimpan');
         return redirect('/transaksi');
     }

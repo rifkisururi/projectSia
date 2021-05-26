@@ -76,7 +76,7 @@
                 <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item fas fa-arrow-circle-right" href=" {{ route('pemesanan.transaksi') }}"> Pemesanan</a>
-                        <a class="collapse-item fas fa-arrow-circleright" href="../pembelian"> Pembelian</a>
+                        <a class="collapse-item fas fa-arrow-circle-right" href="../pembelian"> Pembelian</a>
                         <a class="collapse-item fas fa-arrow-circle-right" href="{{ route('suplayer.index') }}"> Retur</a>
                     </div>
                 </div>
