@@ -20,9 +20,6 @@ class Jurnal extends Migration
             $table->string('no_akun',5);
             $table->integer('debet');
             $table->integer('kredit');
-
-            
-           
         });
         //
     }

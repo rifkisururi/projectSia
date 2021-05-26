@@ -20,6 +20,7 @@ class DetailPesanController extends Controller
         $tambah_pemesanan->kd_supp = $request->supp;
         $tambah_pemesanan->save();
         //SIMPAN DATA KE TABEL DETAIL
+
         $kd_brg = $request->kd_brg;
         $qty = $request->qty_pesan;
         $sub_total = $request->sub_total;

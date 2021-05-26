@@ -3,6 +3,7 @@
 @include('sweetalert::alert')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Transaksi Pemesanan </h1>
+
 </div>
 <hr>
 <form action="/detail/simpan" method="POST">
@@ -14,7 +15,7 @@
     </div>
     <div class="form-group col-sm-4">
         <label for="exampleFormControlInput1">Tanggal Transaksi</label>
-        <input type="date" min="1" name="tgl" id="addnmbrg" class="form-control" id="exampleFormControlInput1" require>
+        <input type="date" name="tgl" id="addnmbrg" class="form-control" value="<?php echo date('Y-m-d'); ?>" require>
     </div>
     <div class="form-group col-sm-4">
         <label for="exampleFormControlInput1">Supplier</label>
@@ -38,6 +39,7 @@
                         <tr>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
+                            <th>Harga</th>
                             <th>Quantity</th>
                             <th>Sub Total</th>
                             <th>Aksi</th>
@@ -49,8 +51,9 @@
                         <tr>
                             <td><input name="kd_brg[]" class="form-control" type="hidden" value="{{$temp->kd_brg}}" readonly>{{$temp->kd_brg}}</td>
                             <td><input name="nama" class="form-control" type="hidden" value="{{$temp->nm_brg}}" readonly>{{$temp->nm_brg}}</td>
-                            <td><input name="qty_pesan[]" class="formcontrol" type="hidden" value="{{$temp->qty_pesan}}" readonly>{{$temp->qty_pesan}}</td>
-                            <td> <input name="sub_total[]" class="formcontrol" type="hidden" value="{{$temp->sub_total}}" readonly>{{$temp->sub_total}}</td>
+                            <td><input name="harga" class="form-control" type="hidden" value="{{$temp->harga}}" readonly>{{$temp->harga}}</td>
+                            <td><input name="qty_pesan[]" class="form-control" type="hidden" value="{{$temp->qty_pesan}}" readonly>{{$temp->qty_pesan}}</td>
+                            <td> <input name="sub_total[]" class="form-control" type="hidden" value="{{$temp->sub_total}}" readonly>{{$temp->sub_total}}</td>
                             <td align="center">
                                 <a href="/transaksi/hapus/{{$temp->kd_brg}}" onclick="return confirm('Yakin Ingin menghapus data?')" class="dnone d-sm-inline-block btn btn-sm btn-danger shadow-sm">
                                     <i class="fas fa-trash-alt fa-sm text-white-50"></i> Hapus</a>
