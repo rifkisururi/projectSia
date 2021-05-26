@@ -14,17 +14,17 @@ class TriggerTambah extends Migration
     public function up()
     {
         //
-    
-            DB::unprepared('
+
+        DB::unprepared('
             CREATE TRIGGER update_stok after INSERT ON detail_pembelian
             FOR EACH ROW BEGIN
             UPDATE barang
-            SET stok = stok + qty_beli
+            SET barang.stok = barang.stok + new.qty_beli
             WHERE
-            kd_brg = NEW.no_beli;
+            barang.kd_brg = NEW.kd_brg;
             END
-            ');
-        }           
+        ');
+    }
     /**
      * Reverse the migrations.
      *
@@ -33,9 +33,7 @@ class TriggerTambah extends Migration
     public function down()
     {
         //
-        
-            DB::unprepared('DROP TRIGGER update_stok');
-           
 
+        DB::unprepared('DROP TRIGGER update_stok');
     }
 }

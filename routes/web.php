@@ -53,3 +53,9 @@ Route::get('/transaksi/hapus/{kd_brg}', 'PemesananController@destroy');
 //Detail Pesan
 Route::post('/detail/store', 'DetailPesanController@store');
 Route::post('/detail/simpan', 'DetailPesanController@simpan');
+
+// pembelian
+Route::get('/pembelian', 'PembelianController@index')->name('pembelian.transaksi');
+Route::get('/pembelian-beli/{id}', 'PembelianController@edit');
+Route::post('/pembelian/simpan', 'PembelianController@simpan');
+Route::get('/pembelian', 'PembelianController@index')->name('cetak.order_pdf');
