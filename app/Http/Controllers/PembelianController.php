@@ -37,13 +37,20 @@ class PembelianController extends Controller
         $noj = 1;
         $formatj = sprintf("%03s", abs((int)$noUrutAkhirj + 1)) . '/' . $AWALJurnal . '/' . $bulanRomawij[date('n')] . '/' . date('Y');
         $decrypted = Crypt::decryptString($id);
-        $detail = DB::table('tampil_pemesanan')->where('no_pesan', $decrypted)->get();
+        $detail = DB::table('detail_pesan')
+            ->join('barang', 'barang.kd_brg', '=', 'detail_pesan.kd_brg')
+            ->where('no_pesan', $decrypted)->get();
+
+
         $pemesanan = DB::table('pemesanan')->where('no_pesan', $decrypted)->get();
-        $akunkas = DB::table('setting')->where('nama_transaksi', 'Kas')->get();
-        $akunpembelian = DB::table('setting')->where('nama_transaksi', 'Pembelian')->get();
+
+        //$akunkas = DB::table('setting')->where('nama_transaksi', 'Kas')->get();
+        //$akunpembelian = DB::table('setting')->where('nama_transaksi', 'Pembelian')->get();
         return view('pembelian.beli', [
             'detail' => $detail, 'format' => $format,
-            'no_pesan' => $decrypted, 'pemesanan' => $pemesanan, 'formatj' => $formatj, 'kas' => $akunkas, 'pembelian' => $akunpembelian, 'temp_pemesanan' => $temp_pesan
+            'no_pesan' => $decrypted, 'pemesanan' => $pemesanan, 'formatj' => $formatj,
+            //'kas' => $akunkas, 'pembelian' => $akunpembelian, 
+            'temp_pemesanan' => $temp_pesan
         ]);
     }
     public function pdf($id)

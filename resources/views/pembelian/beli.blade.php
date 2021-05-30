@@ -1,4 +1,4 @@
-extends('layouts.layout')
+@extends('layouts.layout')
 @section('content')
 @include('sweetalert::alert')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -10,18 +10,14 @@ extends('layouts.layout')
 
     <div class="form-group col-sm-4">
         <label for="exampleFormControlInput1">No Pembelian</label>
-        @foreach($kas as $ks)
-        <input type="hidden" name="akun" value="{{ $ks->no_akun }}" class="form-control" id="exampleFormControlInput1">
-        @endforeach
-        @foreach($pembelian as $bli)
-        <input type="hidden" name="pembelian" value="{{ $bli->no_akun }}" class="form-control" id="exampleFormControlInput1">
-        @endforeach
+
+
         <input type="hidden" name="no_jurnal" value="{{ $formatj }}" class="form-control" id="exampleFormControlInput1">
-        <input type="text" name="no_faktur" value="{{ $format }}" readonly cl ass="form-control" id="exampleFormControlInput1">
+        <input type="text" name="no_faktur" value="{{ $format }}" readonly class="form-control" id="exampleFormControlInput1">
     </div>
     <div class="form-group col-sm-4">
         <label for="exampleFormControlInput1">Tanggal Pembelian</label>
-        <input type="text" min="1" name="tgl" value="{{ date('Y-md') }}" readonly id="addnmbrg" class="formcontrol" id="exampleFormControlInput1" require>
+        <input type="text" min="1" name="tgl" value="{{ date('Y-m-d') }}" readonly id="addnmbrg" class="form-control" id="exampleFormControlInput1" require>
     </div>
     @foreach($pemesanan as $psn)
     <div class="form-group col-sm-4">
@@ -32,7 +28,7 @@ extends('layouts.layout')
 
     <div class="form-group col-sm-4">
         <label for="exampleFormControlInput1">Tanggal Pemesanan</label>
-        <input type="text" min="1" name="tglpesan" value="{{ $psn->tgl_pesan }}" readonly id="addnmbrg" class="formcontrol" id="exampleFormControlInput1" require>
+        <input type="text" min="1" name="tglpesan" value="{{ $psn->tgl_pesan }}" readonly id="addnmbrg" class="form-control" id="exampleFormControlInput1" require>
     </div>
     @endforeach
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -51,12 +47,14 @@ extends('layouts.layout')
                         @php($total = 0)
                         @foreach($detail as $temp)
                         <tr>
-                            <td><input name="no_beli[]" class="formcontrol" type="hidden" value="{{$temp->no_pesan}}" readonly><input name="kd_brg[]" class="formcontrol" type="hidden" value="{{$temp->kd_brg}}" readonly>{{$temp->kd_brg}}</td>
+                            <td><input name="no_beli[]" class="form-control" type="hidden" value="{{$temp->no_pesan}}" readonly><input name="kd_brg[]" class="form-control" type="hidden" value="{{$temp->kd_brg}}" readonly>{{$temp->kd_brg}}</td>
                             <td>{{$temp->nm_brg}}</td>
-                            <td><input name="qty_beli[]" class="formcontrol" type="hidden" value="{{$temp->qty_pesan}}" readonly>{{$temp->qty_pesan}}</td>
-                            <td><input name="sub_beli[]" class="formcontrol" type="hidden" value="{{$temp->sub_total}}" readonly>{{$temp->sub_total}}</td>
+                            <td><input name="qty_beli[]" class="form-control" type="hidden" value="{{$temp->qty_pesan}}" readonly>{{$temp->qty_pesan}}</td>
+                            <td><input name="sub_beli[]" class="form-control" type="hidden" value="{{$temp->harga}}" readonly>{{$temp->harga * $temp->qty_pesan}}
+
+                            </td>
                         </tr>
-                        @php($total += $temp->sub_total)
+                        @php($total += $temp->harga * $temp->qty_pesan)
                         @endforeach
 
                         <tr>
